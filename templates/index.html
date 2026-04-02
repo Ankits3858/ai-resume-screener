@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Screener | Intelligent Candidate Matching</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-file-earmark-person-fill me-2"></i>
+                AI Resume Screener
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Ankits3858" target="_blank">
+                            <i class="bi bi-github me-1"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">AI-Powered</span> Resume Screening
+                    </h1>
+                    <p class="hero-subtitle">
+                        Leverage Natural Language Processing to instantly analyze and rank resumes 
+                        against your job descriptions. Save hours of manual screening.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Accuracy</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10x</span>
+                            <span class="stat-label">Faster</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Free</span>
+                        </div>
+                    </div>
+                    <a href="#analyzer" class="btn btn-primary btn-lg mt-4">
+                        <i class="bi bi-rocket-takeoff me-2"></i>Start Screening
+                    </a>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="hero-illustration">
+                        <div class="floating-card card-1">
+                            <i class="bi bi-file-earmark-text"></i>
+                            <span>Resume Uploaded</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="bi bi-cpu"></i>
+                            <span>AI Processing</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            <span>95% Match</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">How It Works</h2>
+            <p class="section-subtitle text-center">Three simple steps to find your perfect candidates</p>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="bi bi-clipboard-data"></i>
+                        </div>
+                        <h4>Enter Job Description</h4>
+                        <p>Paste your job requirements including skills, qualifications, and experience needed.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="bi bi-cloud-upload"></i>
+                        </div>
+                        <h4>Upload Resumes</h4>
+                        <p>Upload multiple resumes in PDF, DOCX, or TXT format for batch processing.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="bi bi-bar-chart-line"></i>
+                        </div>
+                        <h4>Get Rankings</h4>
+                        <p>Receive instant AI-powered rankings with detailed match scores and insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Analyzer Section -->
+    <section id="analyzer" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Resume Analyzer</h2>
+            <p class="section-subtitle text-center">Upload resumes and get instant AI-powered analysis</p>
+            
+            <div class="analyzer-container mt-5">
+                <form id="analyzerForm" enctype="multipart/form-data">
+                    <div class="row g-4">
+                        <!-- Job Description -->
+                        <div class="col-lg-6">
+                            <div class="form-section">
+                                <h5 class="form-section-title">
+                                    <i class="bi bi-briefcase me-2"></i>Job Description
+                                </h5>
+                                <div class="mb-3">
+                                    <textarea 
+                                        class="form-control" 
+                                        id="jobDescription" 
+                                        name="job_description"
+                                        rows="12" 
+                                        placeholder="Paste the job description here...
+
+Example:
+We are looking for a Senior Software Engineer with:
+- 5+ years of Python experience
+- Strong knowledge of Django/Flask
+- Experience with React or Vue.js
+- Familiarity with AWS services
+- Excellent communication skills
+- Bachelor's degree in Computer Science"
+                                        required
+                                    ></textarea>
+                                    <div class="char-count">
+                                        <span id="charCount">0</span> characters
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resume Upload -->
+                        <div class="col-lg-6">
+                            <div class="form-section">
+                                <h5 class="form-section-title">
+                                    <i class="bi bi-file-earmark-arrow-up me-2"></i>Upload Resumes
+                                </h5>
+                                <div class="upload-zone" id="uploadZone">
+                                    <input 
+                                        type="file" 
+                                        class="file-input" 
+                                        id="resumeFiles" 
+                                        name="resumes"
+                                        accept=".pdf,.docx,.doc,.txt"
+                                        multiple
+                                        required
+                                    >
+                                    <div class="upload-content">
+                                        <i class="bi bi-cloud-arrow-up upload-icon"></i>
+                                        <p class="upload-text">Drag & drop resumes here or <span class="text-primary">browse</span></p>
+                                        <p class="upload-hint">Supports PDF, DOCX, DOC, TXT (Max 16MB each)</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- File List -->
+                                <div id="fileList" class="file-list mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg px-5" id="analyzeBtn">
+                            <i class="bi bi-search me-2"></i>Analyze Resumes
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" class="loading-container" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">Analyzing resumes with AI...</p>
+                    <p class="loading-subtext">This may take a few seconds</p>
+                </div>
+                
+                <!-- Results Section -->
+                <div id="resultsSection" class="results-section" style="display: none;">
+                    <div class="results-header">
+                        <h3><i class="bi bi-trophy me-2"></i>Analysis Results</h3>
+                        <p class="text-muted" id="resultsCount"></p>
+                    </div>
+                    <div id="resultsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Powerful Features</h2>
+            <p class="section-subtitle text-center">Advanced NLP capabilities for accurate resume screening</p>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h5>Semantic Analysis</h5>
+                        <p>Goes beyond keyword matching to understand context and meaning using TF-IDF vectorization.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h5>Skill Extraction</h5>
+                        <p>Automatically identifies technical skills, tools, and frameworks from resume content.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <h5>Detailed Scoring</h5>
+                        <p>Multi-factor scoring based on skills, keywords, experience, and semantic similarity.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-files"></i>
+                        </div>
+                        <h5>Batch Processing</h5>
+                        <p>Upload and analyze multiple resumes at once with ranked results.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5>Privacy First</h5>
+                        <p>All processing happens locally. Your data is never stored or shared.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="bi bi-file-earmark-check"></i>
+                        </div>
+                        <h5>Multi-Format Support</h5>
+                        <p>Supports PDF, DOCX, DOC, and TXT file formats for maximum flexibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <h5><i class="bi bi-file-earmark-person-fill me-2"></i>AI Resume Screener</h5>
+                    <p class="text-muted">Intelligent resume screening powered by Natural Language Processing.</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#analyzer">Analyzer</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <div class="developer-card">
+                        <img src="{{ url_for('static', filename='images/author.jpg') }}" 
+                             alt="Ankit Kumar" 
+                             class="developer-img" 
+                             onerror="this.src='https://ui-avatars.com/api/?name=Ankit+Kumar&background=4f46e5&color=fff&size=200&bold=true'">
+                        <div class="developer-info">
+                            <h6 class="mb-1">Ankit Kumar</h6>
+                            <p class="text-muted small mb-2">Developer</p>
+                            <div class="developer-links">
+                                <a href="https://github.com/Ankits3858" target="_blank" rel="noopener noreferrer" class="dev-link" title="GitHub">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/ankit-kumar-58673221b/" target="_blank" rel="noopener noreferrer" class="dev-link" title="LinkedIn">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                                <a href="mailto:ankit.a0523114022@gmail.com" target="_blank" rel="noopener noreferrer" class="dev-link" title="Send Email">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </a>
+                            </div>
+                            <div class="developer-email mt-2">
+                                <i class="bi bi-envelope me-2"></i>
+                                <a href="mailto:ankit.a0523114022@gmail.com">ankit.a0523114022@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 AI Resume Screener. Created by <strong>Ankit Kumar</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
